@@ -1,3 +1,4 @@
+#coding:utf8
 """
 Django settings for dj192 project.
 
@@ -37,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'restaurants', #新增 restaurants APP
 )
 
 MIDDLEWARE_CLASSES = (
