@@ -3,21 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>food menu</title>
+    <style>
+        table,th,td{
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
-    <p>共有 {{ foods|length }} 道菜</p>
-    {% for f_item in foods %}
-        <h3>第 {{ forloop.counter }} 道食物</h3>
-        <ul>
-            <li>食物名稱 : {{ f_item.name }}</li>
-            <li>食物價格 : {{ f_item.price }}</li>
-            <li>食物說明 : {{ f_item.comment }}</li>
-{#            <li>食物會辣 : {{ f_item.is_spicy }}</li>#}
-            <li>食物會辣 : {% if f_item.is_spicy %} 會辣 {% else %} 不辣 {% endif %}</li>
-        </ul>
-    {% empty %}
-        <p> 沒賣食物!</p>
-
+    {% for r in restaurants %}
+    <h2>{{ r.name }}</h2>
+        {% if r.food_set.all %}
+            <p>本餐廳共有 {{ r.food_set.all|length }} 道菜</p>
+        <table>
+            <tr>
+                <th>菜名</th>
+                <th>價格</th>
+                <th>辣不辣</th>
+                <th>說明</th>
+            </tr>
+            {% for f_item in r.food_set.all %}
+{#                <h3>第 {{ forloop.counter }} 道菜單</h3>#}
+                <tr>
+                    <td>{{ f_item.name }}</td>
+                    <td>{{ f_item.price }}</td>
+                    <td>{% if f_item.is_spicy %} 會辣
+                        {% else %} 不會辣 {% endif %}</td>
+                    <td>{{ f_item.comment }}</td>
+                </tr>
+            {% empty %}
+                <p>沒賣</p>
+            {% endfor %}
+        </table>
+        {% else %}
+            <p>本餐廳暫停營業</p>
+        {% endif %}
     {% endfor %}
+
 </body>
 </html>
