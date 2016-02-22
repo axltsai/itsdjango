@@ -18,13 +18,13 @@ from django.contrib import admin
 admin.autodiscover()
 
 from views import math,welcome
-from restaurants.views import menu,meta,list_restaurants
+from restaurants.views import menu,list_restaurants
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^(\d{1,2})/math/(\d{1,2})/$', math),
     url(r'^menu/$', menu),
-    url(r'^meta/$', meta),
+    # url(r'^meta/$', meta),
     url(r'^welcome/$', welcome),
     url(r'^restaurants_list/$', list_restaurants),
 ]
