@@ -17,7 +17,8 @@
         {% for r in restaurants %}
             <tr>
 {#                <td><input type="radio" name="id" value="{{ r.id }}"></td>#}
-                <td><a href="/menu/?id={{ r.id }}">menu</a> </td>
+{#                <td><a href="/menu/?id={{ r.id }}">menu</a> </td>#}
+                <td><a href="/menu/{{ r.id }}">menu</a> </td>
                 <td>{{ r.name }}</td>
                 <td>{{ r.phone_number }}</td>
                 <td>{{ r.address }}</td>

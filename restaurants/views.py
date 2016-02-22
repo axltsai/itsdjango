@@ -3,10 +3,13 @@ from django.shortcuts import render_to_response,HttpResponse,HttpResponseRedirec
 from restaurants.models import Food, Restaurant
 # Create your views here.
 
-def menu(request):
+def menu(request,id):
     path = request.get_full_path()
-    if 'id' in request.GET and request.GET['id'] != '':
-        restaurant = Restaurant.objects.get(id = request.GET['id'])
+    # if 'id' in request.GET and request.GET['id'] != '':
+    #     restaurant = Restaurant.objects.get(id = request.GET['id'])
+    #     return render_to_response('menu.html', locals())
+    if id:
+        restaurant = Restaurant.objects.get(id=id)
         return render_to_response('menu.html', locals())
     else:
         return HttpResponseRedirect('/restaurants_list/')

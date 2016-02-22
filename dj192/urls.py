@@ -23,8 +23,7 @@ from restaurants.views import menu,list_restaurants
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^(\d{1,2})/math/(\d{1,2})/$', math),
-    url(r'^menu/$', menu),
-    # url(r'^meta/$', meta),
+    url(r'^menu/(\d{1,5})/$', menu),
     url(r'^welcome/$', welcome),
     url(r'^restaurants_list/$', list_restaurants),
 ]
