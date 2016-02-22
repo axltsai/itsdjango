@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurants</title>
+</head>
+<body>
+    <h2>餐廳列表</h2>
+    <table>
+        <tr>
+            <th>店名</th>
+            <th>電話</th>
+            <th>地址</th>
+        </tr>
+        {% for r in restaurants %}
+            <tr>
+                <td>{{ r.name }}</td>
+                <td>{{ r.phone_number }}</td>
+                <td>{{ r.address }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <p>您現在的位置在 {{ path }}</p>
+</body>
+</html>
