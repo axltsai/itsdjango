@@ -18,7 +18,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 from views import math,welcome
-from restaurants.views import menu,list_restaurants
+from restaurants.views import menu,list_restaurants,comment
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -26,4 +26,6 @@ urlpatterns = [
     url(r'^menu/(\d{1,5})/$', menu),
     url(r'^welcome/$', welcome),
     url(r'^restaurants_list/$', list_restaurants),
+    url(r'^comment/(\d{1,5})/$', comment),
+
 ]

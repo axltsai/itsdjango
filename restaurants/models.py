@@ -23,3 +23,11 @@ class Food(models.Model):
 
     class Meta:
         ordering = ['price']
+
+
+class Comment(models.Model):
+    content = models.CharField(max_length = 255)
+    visitor = models.CharField(max_length = 255)
+    email = models.EmailField(max_length = 255)
+    date_time = models.DateTimeField()
+    restaurant = models.ForeignKey(Restaurant)
