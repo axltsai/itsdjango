@@ -109,3 +109,6 @@ STATIC_URL = '/static/'
 
 #sessions :
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+
+#login redirect :
+# LOGIN_REDIRECT_URL = '/index/'
