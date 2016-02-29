@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.template import RequestContext
 from forms import CommentForm
 from django.contrib.sessions.models import Session
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def menu(request,id):
@@ -19,19 +20,21 @@ def menu(request,id):
         return HttpResponseRedirect('/restaurants_list/')
 
 
-
+@login_required()
 def list_restaurants(request):
     restaurants = Restaurant.objects.all()
     path = request.get_full_path()
-    request.session['restaurant'] = restaurants
 
-    sid = request.COOKIES['sessionid']
-    sid2 = request.session.session_key
-    s = Session.objects.get(pk=sid)
-    s_info = 'Session ID:' + sid + \
-             'Session ID2:' + sid2 + \
-             '<br>Expire_date:' + str(s.expire_date) + \
-             '<br>Data:' + str(s.get_decoded())
+    # if 'restaurant' in request.session.keys():
+    #     request.session['restaurant'] = restaurants
+    #
+    #     sid = request.COOKIES['sessionid']
+    #     sid2 = request.session.session_key
+    #     s = Session.objects.get(pk=sid)
+    #     s_info = 'Session ID:' + sid + \
+    #              'Session ID2:' + sid2 + \
+    #              '<br>Expire_date:' + str(s.expire_date) + \
+    #              '<br>Data:' + str(s.get_decoded())
 
     return render_to_response('restaurants_list.html', locals())
 

@@ -18,7 +18,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 admin.autodiscover()
 
-from views import math,welcome,index#,login
+from views import math,welcome,index,register#,login
 from restaurants.views import menu,list_restaurants,comment
 from django.contrib.auth.views import login,logout
 
@@ -32,5 +32,7 @@ urlpatterns = [
     url(r'^accounts/login/$', login, {'template_name':'login.html'}), #指定使用哪一個template
     url(r'^accounts/logout/$', logout, {'template_name':'logout.html'}),
     url(r'^index/$', index),
+    url(r'^accounts/register/$', register),
+
 
 ]

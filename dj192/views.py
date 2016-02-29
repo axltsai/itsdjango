@@ -4,6 +4,7 @@
 
 from django.shortcuts import render_to_response,HttpResponse,HttpResponseRedirect,RequestContext
 from django.contrib import auth
+from django.contrib.auth.forms import UserCreationForm
 
 def math(request,a,b):
     a = int(a)
@@ -44,3 +45,14 @@ def login(request):
 def index(request):
     return render_to_response('index.html',
                               RequestContext(request, locals()))
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            return HttpResponseRedirect('/accounts/login/')
+    else:
+        form = UserCreationForm()
+    return render_to_response('register.html',
+                              RequestContext(request,locals()))
