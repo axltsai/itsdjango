@@ -1,3 +1,4 @@
+#coding:utf8
 """dj192 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -29,7 +30,7 @@ urlpatterns = [
     url(r'^restaurants_list/$', list_restaurants),
     url(r'^comment/(\d{1,5})/$', comment),
     url(r'^accounts/login/$', login, {'template_name':'login.html'}), #指定使用哪一個template
-    url(r'^accounts/logout/$', logout),
+    url(r'^accounts/logout/$', logout, {'template_name':'logout.html'}),
     url(r'^index/$', index),
 
 ]
